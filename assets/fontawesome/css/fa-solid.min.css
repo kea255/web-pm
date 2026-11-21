@@ -1,0 +1,38 @@
+/*!
+ * Font Awesome Free 6.7.2 (subset) — только иконки, которые используются в приложении.
+ * Полный набор (all.min.css + brands/regular/v4 шрифты, ~1.4 МБ) удален, чтобы
+ * приложение и кэш service worker'а не были тяжелыми.
+ * License: Icons — CC BY 4.0, Fonts — SIL OFL 1.1, Code — MIT License (Fonticons, Inc.)
+ */
+
+/* ---------- базовые правила FontAwesome 6 (solid) ---------- */
+.fa{font-family:var(--fa-style-family,"Font Awesome 6 Free");font-weight:var(--fa-style,900)}
+.fa,.fa-solid,.fas{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:var(--fa-display,inline-block);font-style:normal;font-variant:normal;line-height:1;text-rendering:auto}
+.fa-solid:before,.fas:before,.fa:before{content:var(--fa)}
+.fa-solid,.fas{font-family:"Font Awesome 6 Free";font-weight:900}
+
+/* Один шрифт: solid (woff2 — поддерживается всеми современными браузерами). */
+@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:900;font-display:swap;src:url(../webfonts/fa-solid-900.woff2) format("woff2")}
+
+/* ---------- используемые иконки ---------- */
+.fa-key{--fa:"\f084"}
+.fa-unlock{--fa:"\f09c"}
+.fa-right-from-bracket{--fa:"\f2f5"}
+.fa-folder-plus{--fa:"\f65e"}
+.fa-plus{--fa:"\2b"}
+.fa-xmark{--fa:"\f00d"}
+.fa-check{--fa:"\f00c"}
+.fa-pen{--fa:"\f304"}
+.fa-pen-to-square{--fa:"\f044"}
+.fa-trash{--fa:"\f1f8"}
+.fa-eye{--fa:"\f06e"}
+.fa-eye-slash{--fa:"\f070"}
+.fa-copy{--fa:"\f0c5"}
+.fa-rotate-left{--fa:"\f2ea"}
+
+/* Полезные размеры и анимация — если понадобится. */
+.fa-sm{font-size:.75em}
+.fa-lg{font-size:1.25em}
+.fa-fw{width:1.25em;text-align:center}
+.fa-spin{animation:fa-spin 2s infinite linear}
+@keyframes fa-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}

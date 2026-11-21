@@ -1,0 +1,19 @@
+<?php
+/**
+ * Конфигурация приложения "Менеджер паролей".
+ * Имена констант совпадают с требованиями библиотеки DBi (README kea255/DBi).
+ */
+
+const dbhost = 'localhost';
+const dbuser = 'changeme';
+const dbpass = 'changeme';
+const dbname = 'changeme';
+
+/** Кодировка соединения с базой. */
+const db_charset = 'utf8mb4';
+
+/** Число итераций PBKDF2 при derivation ключа из мастер-пароля (должно совпадать с константой в assets/app.js). */
+const kdf_iterations = 100000;
+
+/** Лог SQL-запросов DBi (null = выключен). */
+const db_log = null;

@@ -1,0 +1,4 @@
+*.log
+/db_log.txt
+config.php
+z_git.sh

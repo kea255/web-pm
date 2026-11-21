@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Менеджер паролей</title>
+<link rel="stylesheet" href="assets/fontawesome/css/fa-solid.min.css">
+<link rel="stylesheet" href="assets/app.css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<!-- ---------- экран авторизации: один вход, только мастер-пароль ---------- -->
+<section id="auth" class="auth">
+  <div class="auth-card">
+    <h1><i class="fa-solid fa-key" aria-hidden="true"></i> Менеджер паролей</h1>
+    <p id="authIntro" class="hint"></p>
+
+    <form id="authForm" class="authform">
+      <label>Мастер-пароль <input id="masterPass" type="password" autocomplete="current-password" required></label>
+      <button type="submit" id="authSubmit" class="btn primary">Войти</button>
+    </form>
+
+    <div id="authMsg" class="msg"></div>
+    <div id="offlineHint" class="offlinehint" hidden>
+      Сети нет. В кэше есть данные за последний вход —
+      введите мастер-пароль, чтобы открыть их офлайн.
+    </div>
+  </div>
+</section>
+
+<!-- ---------- рабочая область ---------- -->
+<section id="workspace" class="workspace" hidden>
+  <header class="topbar">
+    <div class="brand"><i class="fa-solid fa-key" aria-hidden="true"></i> Менеджер паролей</div>
+    <div id="status" class="status"></div>
+    <div class="userbox"><span id="lockState">ключ активен</span><button id="logout" class="btn ghost icon" title="Выйти" aria-label="Выйти"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i></button></div>
+  </header>
+
+  <aside class="sidebar">
+    <div class="sidehead">
+      <span>Категории</span>
+      <button id="addCat" class="btn ghost icon" title="Добавить категорию" aria-label="Добавить категорию"><i class="fa-solid fa-folder-plus" aria-hidden="true"></i></button>
+    </div>
+    <ul id="catList" class="catlist"></ul>
+    <p class="sidefoot" id="catsEmpty" hidden>Категорий пока нет — добавьте первую.</p>
+  </aside>
+
+  <main class="main">
+    <div class="toolbar">
+      <h2 id="catTitle">—</h2>
+      <input id="search" class="search" type="search" placeholder="Поиск по записям">
+      <button id="addEntry" class="btn primary icon" title="Добавить запись" aria-label="Добавить запись"><i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+    </div>
+
+    <div class="tablewrap">
+      <table id="grid">
+        <thead>
+          <tr>
+            <th class="col-title">Заголовок</th>
+            <th class="col-login">Логин</th>
+            <th class="col-pass">Пароль</th>
+            <th class="col-comment">Комментарий</th>
+            <th class="col-url">URL</th>
+            <th class="col-actions">Действия</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p id="rowsEmpty" class="empty" hidden>В этой категории нет записей.</p>
+    </div>
+  </main>
+</section>
+
+<!-- ---------- модалка: имя категории ---------- -->
+<div id="catModal" class="modal" hidden>
+  <div class="modalbox">
+    <h3 id="catModalTitle">Новая категория</h3>
+    <input id="catName" type="text" maxlength="100" placeholder="Название категории">
+    <div class="modalactions">
+      <button id="catCancel" class="btn ghost icon" title="Отменить" aria-label="Отменить"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <button id="catSave" class="btn primary icon" title="Сохранить" aria-label="Сохранить"><i class="fa-solid fa-check" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- модалка: запись ---------- -->
+<div id="entryModal" class="modal" hidden>
+  <div class="modalbox wide">
+    <h3 id="entryModalTitle">Новая запись</h3>
+    <label>Заголовок <input id="fTitle" type="text" maxlength="200" autocomplete="off" aria-autocomplete="none"></label>
+    <label>URL <input id="fUrl" type="text" maxlength="250" placeholder="https://..." autocomplete="off" aria-autocomplete="none"></label>
+    <label>Логин <input id="fLogin" type="text" maxlength="200" required autocomplete="off" aria-autocomplete="none"></label>
+    <label>Пароль 
+	<div class="pbl">
+		<input id="fPass" type="text" maxlength="200" required autocomplete="off" aria-autocomplete="none">
+		<button id="bPassGen" class="btn icon" title="Сгенерировать"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i></button></div>
+	</label>
+    <label>Комментарий <textarea id="fComment" rows="4" maxlength="2000"></textarea></label>
+    <div class="modalactions">
+      <button id="entryCancel" class="btn ghost">Отмена</button>
+      <button id="entrySave" class="btn primary">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="assets/omgopass.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
